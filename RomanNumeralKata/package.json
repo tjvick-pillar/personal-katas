@@ -1,0 +1,22 @@
+{
+  "name": "romannumeralkata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/calculator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "mocha": "^6.0.2"
+  },
+  "devDependencies": {
+    "esm": "^3.2.7",
+    "jest": "^24.1.0",
+    "nyc": "^13.3.0"
+  }
+}
