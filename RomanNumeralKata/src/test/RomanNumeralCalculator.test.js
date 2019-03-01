@@ -1,5 +1,5 @@
 import assert from 'assert';
-import add from '../main/RomanNumeralCalculator2';
+import add from '../main/RomanNumeralCalculator3';
 
 describe('#add', () => {
   it('onePlusOneEqualsTwo', () => {
@@ -69,13 +69,15 @@ describe('#add', () => {
   });
 
   // replace IV with IIII on input
+  // split, sort, join
   // sort characters by romanNumeralOrder.indexOf
   // create romanNumeralOrder
-  // split, sort, join
-  // remove old stuff about swapping
-  // may be a bit of a stretch, and should at minimum ignore the most recent test until I get the others passing
 
-  // refactor to extract and rename methods
+  // refactor:
+  // remove old stuff about swapping
+  // extract out sorting
+  // rename
+  // extract out simplifying string
 
   it('ninePlusOneEqualsTen', () => {
     assert.equal(add('IX', 'I'), 'X');
