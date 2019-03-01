@@ -1,134 +1,88 @@
 import assert from 'assert';
-import add from '../main/RomanNumeralCalculator3';
+import add from '../main/RomanNumeralCalculator';
 
 describe('#add', () => {
-  it('onePlusOneEqualsTwo', () => {
-    const sum = add('I', 'I');
-
-    assert.equal(sum, 'II');
+  it('IPlusIEqualsII', () => {
+    assert.equal(add('I', 'I'), 'II');
   });
 
-  // return constant
-
-  it('onePlusTwoIsThree', () => {
-    const sum = add('I', 'II');
-    assert.equal(sum, 'III');
+  it('IIPlusIEqualsIII', () => {
+    assert.equal(add('II', 'I'), 'III');
   });
 
-  // concatenate and return
-
-  it('twoPlusThreeEqualsFive', () => {
-    const sum = add('II', 'III');
-    assert.equal(sum, 'V');
+  it('IIPlusIIIEqualsV', () => {
+    assert.equal(add('II', 'III'), 'V');
   });
 
-  // string replace IIIII to V
-
-  it('onePlusFiveEqualsSix', () => {
-    const sum = add('I', 'V');
-    assert.equal(sum, 'VI');
+  it('IPlusVEqualsVI', () => {
+    assert.equal(add('I', 'V'), 'VI');
   });
 
-  // swap if first numeral is I
-
-  it('fivePlusFiveEqualsTen', () => {
-    const sum = add('V', 'V');
-    assert.equal(sum, 'X');
+  it('VPlusIEqualsVI', () => {
+    assert.equal(add('V', 'I'), 'VI');
   });
 
-  // string replace VV to X
-
-  it('fivePlusFourEqualsNine', () => {
-    const sum = add('V', 'IV');
-    assert.equal(sum, 'IX');
+  it('VPlusVEqualsX', () => {
+    assert.equal(add('V', 'V'), 'X');
   });
 
-  // string replace VIV to IX
-  // refactored out replace lines here
-
-  it('twoPlusFiveEqualsSeven', () => {
-    assert.equal(add('II', 'V'), 'VII');
+  it('IIPlusIIEqualsIV', () => {
+    assert.equal(add('II', 'II'), 'IV');
   });
 
-  // swap if first numeral is I or II
-
-  it('fivePlusTenEqualsFifteen', () => {
-    assert.equal(add('V', 'X'), 'XV');
+  it('VIIPlusIIEqualsIX', () => {
+    assert.equal(add('VII', 'II'), 'IX');
   });
 
-  // also swap if first numeral is V
-
-  it('sixPlusTenEqualsSixteen', () => {
-    assert.equal(add('VI', 'X'), 'XVI');
-  });
-
-  // also swap if first numeral is VI
-
-  it('sixPlusFourEqualsTen', () => {
+  it('VIPlusIVEqualsX', () => {
     assert.equal(add('VI', 'IV'), 'X');
   });
 
-  // replace IV with IIII on input
-  // split, sort, join
-  // sort characters by romanNumeralOrder.indexOf
-  // create romanNumeralOrder
-
-  // refactor:
-  // remove old stuff about swapping
-  // extract out sorting
-  // rename
-  // extract out simplifying string
-
-  it('ninePlusOneEqualsTen', () => {
-    assert.equal(add('IX', 'I'), 'X');
+  it('IIPlusVEqualsVII', () => {
+    assert.equal(add('II', 'V'), 'VII');
   });
 
-  // add IX to removeDoubleCharacters
-
-  it('twentyPlusThirtyEqualsFifty', () => {
-    assert.equal(add('XX', 'XXX'), 'L');
+  it('IVPlusVIEqualsX', () => {
+    assert.equal(add('IV', 'VI'), 'X');
   });
 
-  // add XXXXX to L in simplifyNumeral
-
-  it('tenPlusFortyEqualsFifty', () => {
-    assert.equal(add('X', 'XL'), 'L');
+  it('IPlusIXEqualsX', () => {
+    assert.equal(add('I', 'IX'), 'X');
   });
 
-  // add XL to XXXX in removeDoubleCharacters
+  it('XXXPlusXXEqualsL', () => {
+    assert.equal(add('XXX', 'XX'), 'L');
+  });
 
-  it('tenPlusThirtyEqualsForty', () => {
+  it('LPlusLEqualsC', () => {
+    assert.equal(add('L', 'L'), 'C');
+  });
+
+  it('XLPlusXEqualsL', () => {
+    assert.equal(add('XL', 'X'), 'L');
+  });
+
+  it('XCPlusXEqualsC', () => {
+    assert.equal(add('XC', 'X'), 'C');
+  });
+
+  it('XPlusXXXEqualsXL', () => {
     assert.equal(add('X', 'XXX'), 'XL');
   });
 
-  // add XXXX to XL in simplifyNumeral
+  it('LXPlusXXXEqualsXC', () => {
+    assert.equal(add('LX', 'XXX'), 'XC');
+  });
 
-  it('tenPlusFiftyEqualsSixty', () => {
+  it('XPlusLEqualsLX', () => {
     assert.equal(add('X', 'L'), 'LX');
   });
 
-  // add L to romanNumeralOrder
-
-  it('tenPlusOneHundredEqualsOneHundredTen', () => {
+  it('XPlusCEqualsCX', () => {
     assert.equal(add('X', 'C'), 'CX');
   });
 
-  // add C to romanNumeralOrder
-
-  it('ninetyPlusTwentyEqualsOneHundredTen', () => {
-    assert.equal(add('XC', 'XX'), 'CX');
-  });
-
-  // add XC to removeDoubleCharacters
-  // add LL to C in simplifyNumeral
-
-  it('eightyPlusElevenEqualsNinetyOne', () => {
-    assert.equal(add('LXXX', 'XI'), 'XCI');
-  });
-
-  // add LXL to XC in simplifyNumeral
-
-  it('fortyFourPlusNinetyThreeEqualsOneThirtySeven', () => {
-    assert.equal(add('XLIV', 'XCIII'), 'CXXXVII');
+  it('XLIVPlusXCIIIEqualsCXXXVII', () => {
+    assert.equal(add('XLIV', 'XCIII'), 'CXXXVII')
   });
 });

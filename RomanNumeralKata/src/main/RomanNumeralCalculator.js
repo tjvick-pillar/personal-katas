@@ -1,39 +1,37 @@
-function removeDoubleCharacters(numeral) {
-  return numeral
+function replaceDoubleCharacters(romanNumeral) {
+  return romanNumeral
     .replace(/IX/g, 'VIV')
     .replace(/IV/g, 'IIII')
-    .replace(/XC/, 'LXL')
-    .replace(/XL/, 'XXXX');
+    .replace(/XC/g, 'LXL')
+    .replace(/XL/g, 'XXXX');
 }
 
-const romanNumeralOrder = ['I', 'V', 'X', 'L', 'C'];
+const romanNumeralValueOrder = ['I', 'V', 'X', 'L', 'C'];
 
-function sortNumeral(numeral) {
-  return numeral
+function sortRomanNumeral(romanNumeral) {
+  return romanNumeral
     .split('')
-    .sort((a, b) => romanNumeralOrder.indexOf(b) - romanNumeralOrder.indexOf(a))
+    .sort((a, b) => romanNumeralValueOrder.indexOf(b) - romanNumeralValueOrder.indexOf(a))
     .join('');
 }
 
-function simplifyNumeral(concatenated) {
-  return concatenated
+function simplifyNumeral(romanNumeral) {
+  return romanNumeral
     .replace(/IIIII/g, 'V')
     .replace(/VV/g, 'X')
-    .replace(/XXXXX/g, 'L')
-    .replace(/LL/, 'C')
     .replace(/IIII/g, 'IV')
     .replace(/VIV/g, 'IX')
+    .replace(/XXXXX/g, 'L')
+    .replace(/LL/g, 'C')
     .replace(/XXXX/g, 'XL')
     .replace(/LXL/g, 'XC');
 }
 
-export default function add(num1, num2) {
-  const num1Extended = removeDoubleCharacters(num1);
-  const num2Extended = removeDoubleCharacters(num2);
+export default function add(numeral1, numeral2) {
+  const expandedNumeral1 = replaceDoubleCharacters(numeral1);
+  const expandedNumeral2 = replaceDoubleCharacters(numeral2);
 
-  const concatenated = num1Extended + num2Extended;
-
-  const sorted = sortNumeral(concatenated);
+  const sorted = sortRomanNumeral(expandedNumeral1 + expandedNumeral2);
 
   return simplifyNumeral(sorted);
 }
